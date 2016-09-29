@@ -1,5 +1,11 @@
 package py.edu.facitec.hibernatespringtaller.conf;
 
+import java.util.Date;
+
+import javax.servlet.Filter;
+
+import org.springframework.format.datetime.DateFormatter;
+import org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class ServletSpringMVC extends AbstractAnnotationConfigDispatcherServletInitializer {
@@ -7,7 +13,7 @@ public class ServletSpringMVC extends AbstractAnnotationConfigDispatcherServletI
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
 		// TODO Auto-generated method stub
-		return new Class[]{AppWebConfiguration.class};
+		return new Class[]{AppWebConfiguration.class,JPAConfiguration.class};
 	}
 
 	@Override
@@ -22,5 +28,15 @@ public class ServletSpringMVC extends AbstractAnnotationConfigDispatcherServletI
 		return new String[]{"/"};
 	}
 
+	
+	// Tener habilitado en el EntityManager durante las requisiciones. 
+	 	@Override 
+	 	protected Filter[] getServletFilters() {  	 
+return new Filter[]{ 
+	 	new OpenEntityManagerInViewFilter()}; 
+	 	} 
+
+	 	
+	 	
 	
 }
