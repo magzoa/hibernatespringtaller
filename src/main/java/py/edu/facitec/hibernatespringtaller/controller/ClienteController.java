@@ -41,8 +41,6 @@ public class ClienteController {
 	@RequestMapping(method=RequestMethod.GET)
 	public ModelAndView getLista(){
 		//objeto encargado de responder una petición
-		
-		
 		ModelAndView model=new ModelAndView("/clientes/lista");
 		
 		model.addObject("cliente", clienteDao.buscarTodos());
